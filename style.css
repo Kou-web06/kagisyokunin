@@ -1,0 +1,726 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+#excludeSimilarChars {
+    width: 28px;
+    height: 28px;
+    accent-color: #555;
+    cursor: pointer;
+}
+
+/*Loading Animation*/
+.spinner {
+    --size: 24px;
+    --stroke-width: calc(var(--size) / 6);
+    --accent-opacity: .25;
+    --color: currentColor;
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+    animation: spinner-animation 1s linear infinite;
+}
+
+.spinner::before,
+.spinner::after {
+  content: '';
+  position: absolute;
+  background-color: var(--color);
+  border-radius: 50%;
+}
+
+.spinner::before {
+  inset: 0;
+  opacity: var(--accent-opacity);
+}
+
+.spinner::after {
+  top: var(--stroke-width);
+  left: 50%;
+  width: var(--stroke-width);
+  height: var(--stroke-width);
+  transform: translateX(-50%);
+}
+
+@keyframes spinner-animation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    background-color: #fff;
+    color: #333;
+    margin: 0 1%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.container {
+    background-color: #fff;
+    padding: 40px 20px;
+    width: 100%;
+    text-align: center;
+    flex-grow: 1;
+}
+
+button {
+    max-width: 200px;
+    margin-bottom: 10px;
+}
+
+/**************header****************/
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.logo {
+    width: 120px;
+    margin-bottom: 15px;
+}
+
+.logo img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+header .form {
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.form .link {
+    width: 24px;
+    height: 24px;
+    fill: #333;
+    transition: fill 0.3s ease;
+}
+
+.form:hover .link {
+    fill: #555;
+}
+
+
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+
+/*tooltip*/
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 400px;
+  background-color: black;
+  color: white;
+  font-size: 10px;
+  text-align: left;
+  border-radius: 6px;
+  padding: 20px;
+  position: absolute;
+  z-index: 1;
+  left: -300px; /* ツールチップをさらに左に寄せる */
+  bottom: 0;
+  margin-left: 0;
+  transform: translateY(100%);
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+
+/**************mainvisual***************/
+
+.mainvisual {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 94%;
+    margin-bottom: 50px;
+    gap: 20px;
+}
+
+.character {
+    width: 110px;
+}
+
+
+/*吹き出しデザイン*/
+.phrase {
+  position: relative;
+  display: inline-block;
+  margin-left: 5px 0 5px 16px;
+  padding: 10px 20px;
+  border-radius: 3px;
+  background-color: #f5f5f5;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #000000;
+}
+
+.phrase::after {
+  content: "";
+  position: absolute;
+  top: 49%;
+  left: 0;
+  border-style: solid;
+  border-width: 0 16px 16px 0;
+  border-color: transparent #f5f5f5 transparent transparent;
+  translate: -100% calc(-50% - 0.4px);
+  transform: skew(0, -10deg);
+  transform-origin: right;
+}
+
+.subtitle {
+    font-size: 1.1em;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.options-group, .length-group, .result-area {
+    margin: 0 auto 25px auto;
+    text-align: center;
+    max-width: 1000px;
+    width: 94%;
+}
+
+.option-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.option-item:last-child {
+    border-bottom: none;
+}
+
+.option-item label {
+    font-size: 1em;
+    color: #444;
+}
+
+.option-item label {
+    margin-left: 200px;
+}
+
+.option-item label {
+    margin-right: 200px;
+}
+
+#excludeSimilarChars {
+    margin-right: 200px;
+}
+
+/* Toggle Switch Styles */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 25px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 19px;
+    width: 19px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #2196F3; /* 少し青みを入れるか、グレーの濃淡にするか */
+    background-color: #555; /* 白黒基調に合わせて少し濃いグレーに */
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #555;
+}
+
+input:checked + .slider:before {
+    -webkit-transform: translateX(20px);
+    -ms-transform: translateX(20px);
+    transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 25px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Range Slider Styles */
+.length-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25px;
+}
+.length-group label {
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: #444;
+}
+#passwordLength {
+    width: 100%;
+    -webkit-appearance: none;
+    height: 8px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+#passwordLength::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #555;
+    cursor: pointer;
+}
+#passwordLength::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #555;
+    cursor: pointer;
+}
+
+
+/* Buttons */
+.generate-button, .copy-button {
+    background-color: #333;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.generate-button:hover, .copy-button:hover {
+    background-color: #555;
+}
+
+.result-area {
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 3% 5%;
+    border-radius: 5px;
+}
+
+.password-display-wrapper {
+    position: relative;
+    min-height: 90px;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    overflow: hidden; /* For rounded corners */
+}
+
+.loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.generated-password {
+    border: none;
+    padding: 12px;
+    font-size: 1.2em;
+    background-color: #f5f5f5;
+    color: #333;
+    outline: none;
+    cursor: default;
+    text-align: center;
+    font-family: 'monospace'; /* パスワードは等幅フォントが良い */
+}
+
+.toggle-visibility-button {
+    background-color: #eee;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-visibility-button:hover {
+    background-color: #ddd;
+}
+
+.toggle-visibility-button img {
+    display: block; /* imgの余計な隙間をなくす */
+}
+
+/* Strength Indicator */
+.strength-indicator {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.strength-label {
+    font-size: 0.9em;
+    color: #666;
+    margin-right: 10px;
+    min-width: 80px; /* レイアウト崩れ防止 */
+    text-align: right;
+}
+
+.strength-bar-container {
+    flex-grow: 1;
+    background-color: #eee;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.strength-bar {
+    height: 100%;
+    width: 0%; /* JSで制御 */
+    background-color: #ccc; /* 弱い時の色 */
+    transition: width 0.3s ease, background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+.strength-text {
+    font-size: 0.9em;
+    color: #666;
+    margin-left: 10px;
+    min-width: 60px; /* レイアウト崩れ防止 */
+    text-align: left;
+}
+
+
+.note {
+    font-size: 0.85em;
+    color: #888;
+    margin-top: 30px;
+}
+
+/* Footer */
+footer {
+    background-color: #f8f8f8;
+    padding: 20px 0 10px 0;
+    text-align: center;
+    font-size: 0.9em;
+    color: #555;
+    border-top: 1px solid #eee;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 30px 8%;
+    }
+
+    .character {
+        width: 80px;
+        margin-bottom: 15px;
+    }
+
+    header svg {
+        margin-top: 10px;
+    }
+
+    .option-item label {
+        margin-left: 0;
+    }
+
+    .option-item label {
+        margin-right: 0;
+    }
+
+    #excludeSimilarChars {
+        margin-right: 0;
+    }
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s, bottom 0.3s;
+}
+
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+    bottom: 40px;
+}
+
+/* Copy Button Enhancements */
+.copy-button  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.copy-button.success {
+    background-color: #2bcbba; /* Green color for success */
+}
+
+.copy-button.success:hover {
+    background-color: #25a292;
+}
+
+.copy-button i {
+    transition: transform 0.3s;
+}
+
+.copy-button.success i {
+    transform: scale(1.2);
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none; /* Initially hidden */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-character {
+    width: 150px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.close-button:hover {
+    color: #333;
+}
+
+#modal-message {
+    font-size: 1.1em;
+    color: #333;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.modal-result-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.modal-result-area .generated-password {
+    flex-grow: 1;
+    font-size: 1em; /* モーダル用に少し調整 */
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+.modal-result-area .copy-button {
+    flex-shrink: 0;
+    width: auto; /* 幅を自動調整 */
+    padding: 10px 15px;
+    font-size: 1em;
+    margin-bottom: 0; /* 下マージンをリセット */
+}
+
+/* Notion Modal Styles */
+.notion-modal-content {
+    max-width: 800px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.notion-modal-content iframe {
+    border: none;
+}
+
+/* Site Footer */
+.site-footer {
+    background-color: #fff;
+    color: #555;
+    padding: 50px 20px;
+    font-size: 0.9em;
+    border-top: 1px solid #eee;
+}
+
+.footer-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-section {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.site-footer .footer-logo {
+    width: 150px;
+    margin: 0 auto 20px auto;
+}
+
+.site-footer .footer-logo img {
+    width: 100%;
+}
+
+.footer-about p {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: #666;
+}
+
+.site-footer h4 {
+    font-size: 1.2em;
+    color: #222;
+    margin-bottom: 20px;
+}
+
+.site-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.site-footer ul li {
+    margin-bottom: 10px;
+}
+
+.site-footer ul a {
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.site-footer ul a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    padding-top: 30px;
+    font-size: 0.85em;
+    color: #888;
+}
+
+.footer-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}

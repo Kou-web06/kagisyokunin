@@ -1,0 +1,488 @@
+/* lp_style.css */
+
+body {
+    background-color: #fff; /* LPの背景は白に */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.lp-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 1px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.lp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1.5px solid #eee;
+}
+
+.lp-header .logo {
+    display: flex;
+    align-items: center;
+}
+
+.lp-header .logo img {
+    width: 200px;
+}
+
+.lp-header .logo span {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Hero Section */
+.hero-section {
+    height: auto; /* スマートフォンでは高さを自動に */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 30px 20px 60px 20px;
+    text-align: left;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-content h1 {
+    font-size: 2.8em;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+.hero-content p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+.cta-button {
+    background-color: #333;
+    color: white;
+    padding: 15px 35px;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+.cta-button:hover {
+    background-color: #555;
+    transform: translateY(-3px);
+}
+
+.hero-image img {
+    width: 320px;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Problem Section */
+.problem-section {
+    background-color: #f9f9f9;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.problem-section h2 {
+    font-size: 2.2em;
+    margin-bottom: 60px;
+}
+
+.highlight {
+    color: #2196F3;
+}
+
+.problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.problem-item {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+.problem-item h3 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Solution Section */
+.solution-section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.solution-section h2 {
+    font-size: 2.2em;
+    margin-bottom: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.section-icon {
+    width: 120px;
+}
+
+.solution-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.solution-item {
+    padding: 30px;
+}
+
+.solution-item h4 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+
+/* How to Use Section */
+.how-to-use-section {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.how-to-use-section h2 {
+    font-size: 2.2em;
+    margin-bottom: 60px;
+}
+
+.how-to-use-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.how-to-use-item {
+    background: #fff;
+    padding: 40px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+.how-to-use-item .step-number {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2196F3;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.how-to-use-item h4 {
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+
+/* Character Section */
+.character-section {
+    background-color: #333;
+    color: #fff;
+    padding: 60px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.character-image img {
+    width: 180px;
+    border-radius: 50%;
+}
+
+.character-speech {
+    max-width: 500px;
+}
+
+.character-speech h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+/* FAQ Section */
+.faq-section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.faq-section h2 {
+    font-size: 2.2em;
+    margin-bottom: 60px;
+}
+
+.faq-grid {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.faq-item {
+    border-bottom: 1px solid #eee;
+}
+
+.faq-item summary {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 20px 0;
+    cursor: pointer;
+    position: relative;
+    list-style: none; /* Safariの矢印を消す */
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none; /* Chrome/Edgeの矢印を消す */
+}
+
+.faq-item summary::after {
+    content: '+';
+    position: absolute;
+    right: 10px;
+    font-size: 1.5em;
+    color: #2196F3;
+    transition: transform 0.2s ease-in-out;
+}
+
+.faq-item[open] summary::after {
+    transform: rotate(45deg);
+}
+
+.faq-item p {
+    padding: 0 10px 20px 10px;
+    color: #555;
+    line-height: 1.7;
+}
+
+
+/* Final CTA Section */
+.final-cta-section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.final-cta-section h2 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+}
+
+.final-cta-section p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+/* Site Footer */
+.site-footer {
+    background-color: #fff;
+    color: #555;
+    text-align: center;
+    padding: 50px 5px 5px 5px;
+    font-size: 0.9em;
+    border: 2px solid #eee;
+    border-radius: 5px;
+    margin: 40px 0;
+}
+
+.footer-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.footer-section {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.site-footer .footer-logo {
+    width: 150px;
+    margin: 0 auto 20px auto;
+}
+
+.site-footer .footer-logo img {
+    width: 100%;
+}
+
+.footer-about p {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: #666;
+}
+
+.site-footer h4 {
+    font-size: 1.2em;
+    color: #222;
+    margin-bottom: 20px;
+}
+
+.site-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.site-footer ul li {
+    margin-bottom: 10px;
+}
+
+.site-footer ul a {
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.site-footer ul a:hover {
+    color: #000;
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    padding-top: 30px;
+    font-size: 0.85em;
+    color: #888;
+}
+
+.footer-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* Animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .lp-header {
+        height: auto;
+        padding: 15px 0;
+    }
+
+    .lp-header .logo {
+        height: auto;
+        padding-top: 0;
+    }
+    
+    .lp-header .logo img {
+        width: 150px;
+    }
+
+    .hero-section {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 5px 20px;
+        margin-bottom: 60px;
+    }
+    .hero-content h1 {
+        font-size: 2.2em;
+    }
+    .hero-content p {
+        font-size: 1em;
+    }
+    .hero-image img {
+        
+        margin-bottom: 40px;
+    }
+
+    .problem-section,
+    .solution-section,
+    .how-to-use-section,
+    .faq-section,
+    .final-cta-section {
+        padding: 60px 20px;
+    }
+
+    .problem-section h2,
+    .solution-section h2,
+    .how-to-use-section h2,
+    .faq-section h2,
+    .final-cta-section h2 {
+        font-size: 1.8em;
+        margin-bottom: 40px;
+    }
+
+    .problem-grid,
+    .solution-grid,
+    .how-to-use-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .solution-section h2 {
+        flex-direction: column;
+        font-size: 1.5rem;
+    }
+
+    .section-icon {
+        width: 100px;
+    }
+
+    .character-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .faq-item summary {
+        font-size: 1.1em;
+        padding-right: 25px; /* プラス記号との重なり防止 */
+    }
+}
