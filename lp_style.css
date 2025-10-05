@@ -442,6 +442,10 @@ img {
         margin-bottom: 40px;
     }
 
+    .cta-button {
+        font-size: .9rem;
+    }
+
     .problem-section,
     .solution-section,
     .how-to-use-section,
@@ -479,6 +483,12 @@ img {
         flex-direction: column;
         text-align: center;
         gap: 30px;
+    }
+
+    .character-section .character-speech h3,
+    .character-section .character-speech p {
+        font-size: .9em;
+
     }
 
     .faq-item summary {
