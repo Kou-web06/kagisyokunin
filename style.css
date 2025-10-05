@@ -331,6 +331,7 @@ input:checked + .slider:before {
     -webkit-transition: .2s;
     transition: opacity .2s;
 }
+
 #passwordLength::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
