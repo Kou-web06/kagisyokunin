@@ -26,6 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const notionCloseButton = document.getElementById('notion-close-button');
     const formSvg = document.querySelector('header .form svg');
 
+    // mainvisual関連のDOM要素
+    const characterImg = document.querySelector('.mainvisual .character img');
+    const phraseText = document.querySelector('.mainvisual .phrase p');
+
     // 文字セット
     const upperCaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const lowerCaseChars = 'abcdefghijklmnopqrstuvwxyz';
@@ -36,7 +40,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // パスワード長スライダーの値を表示に反映
     passwordLength.addEventListener('input', () => {
         lengthValue.textContent = passwordLength.value;
+        updatePreviewStrength();
     });
+
+    // 条件変更時にリアルタイムで強度を更新
+    includeUppercase.addEventListener('change', updatePreviewStrength);
+    includeLowercase.addEventListener('change', updatePreviewStrength);
+    includeNumbers.addEventListener('change', updatePreviewStrength);
+    includeSymbols.addEventListener('change', updatePreviewStrength);
+    excludeSimilarChars.addEventListener('change', updatePreviewStrength);
 
     // 生成ボタンのクリックイベント
     generateButton.addEventListener('click', () => {
@@ -93,7 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
             generatedPassword.value = password;
             modalGeneratedPassword.value = password;
 
-            updateStrengthIndicator(password);
+            // 実際のパスワード強度を表示（予想ではなく）
+            updateActualStrength(password);
             showModal();
         }, 500);
     });
@@ -152,7 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
         return str[Math.floor(Math.random() * str.length)];
     }
 
-    function updateStrengthIndicator(password) {
+    // 実際のパスワード強度を表示する関数（予想表示を削除）
+    function updateActualStrength(password) {
         let score = 0;
         if (password.length >= 8) score++;
         if (password.length >= 12) score++;
@@ -170,21 +184,99 @@ document.addEventListener('DOMContentLoaded', () => {
             strength = '弱い';
             color = '#e74c3c';
             width = '33%';
+            // 弱い時のキャラクター変更
+            updateCharacterDisplay('weak');
         } else if (score < 6) {
             strength = '普通';
             color = '#f1c40f';
             width = '66%';
+            // 普通時のキャラクター変更
+            updateCharacterDisplay('normal');
         } else {
             strength = '強力';
             color = '#2ecc71';
             width = '100%';
+            // 強力時のキャラクター変更
+            updateCharacterDisplay('strong');
         }
         strengthText.textContent = strength;
         strengthBar.style.backgroundColor = color;
         strengthBar.style.width = width;
     }
+
+    // 条件に基づいて予想強度を表示する関数
+    function updatePreviewStrength() {
+        const length = parseInt(passwordLength.value);
+        let score = 0;
+        
+        // 長さによるスコア
+        if (length >= 8) score++;
+        if (length >= 12) score++;
+        if (length >= 16) score++;
+        
+        // 文字種によるスコア
+        if (includeUppercase.checked) score++;
+        if (includeLowercase.checked) score++;
+        if (includeNumbers.checked) score++;
+        if (includeSymbols.checked) score++;
+
+        let strength = '';
+        let color = '';
+        let width = '0%';
+
+        if (score < 3) {
+            strength = '弱い';
+            color = '#e74c3c';
+            width = '33%';
+            // 弱い時のキャラクター変更
+            updateCharacterDisplay('weak');
+        } else if (score < 6) {
+            strength = '普通';
+            color = '#f1c40f';
+            width = '66%';
+            // 普通時のキャラクター変更
+            updateCharacterDisplay('normal');
+        } else {
+            strength = '強力';
+            color = '#2ecc71';
+            width = '100%';
+            // 強力時のキャラクター変更
+            updateCharacterDisplay('strong');
+        }
+        
+        strengthText.textContent = strength;
+        strengthBar.style.backgroundColor = color;
+        strengthBar.style.width = width;
+    }
+
+    // キャラクターとコメントを更新する関数
+    function updateCharacterDisplay(strengthLevel) {
+        if (!characterImg || !phraseText) return;
+
+        switch(strengthLevel) {
+            case 'weak':
+                characterImg.src = 'img/character3.png';
+                phraseText.textContent = 'うーむ...もう少し頑丈な鍵はどうじゃ？';
+                break;
+            case 'normal':
+                characterImg.src = 'img/character.png';
+                phraseText.textContent = 'まずまずの鍵じゃな。';
+                break;
+            case 'strong':
+                characterImg.src = 'img/character.png';
+                phraseText.textContent = 'ふぉっふぉ...良い鍵ができそうじゃ！';
+                break;
+            default:
+                characterImg.src = 'img/character.png';
+                phraseText.textContent = '心配いらん、ワシに任せなさい';
+                break;
+        }
+    }
     
     function showModal() {
         modal.style.display = 'flex';
     }
+
+    // 初期表示で予想強度を設定
+    updatePreviewStrength();
 });

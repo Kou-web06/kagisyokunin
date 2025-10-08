@@ -18,3 +18,18 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(element);
     });
 });
+
+// main.htmlへの遷移時にローディングアニメーションを表示
+function navigateToMain(event) {
+    event.preventDefault(); // デフォルトのリンク動作を防ぐ
+    
+    const loadingOverlay = document.getElementById('loading-overlay');
+    
+    // ローディングアニメーションを表示
+    loadingOverlay.style.display = 'flex';
+    
+    // 3秒後にmain.htmlに遷移
+    setTimeout(() => {
+        window.location.href = 'main.html';
+    }, 3000);
+}

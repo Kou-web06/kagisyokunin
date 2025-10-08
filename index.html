@@ -9,6 +9,21 @@
     <link rel="stylesheet" href="lp_style.css">
 </head>
 <body>
+    <!-- ローディングアニメーション -->
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">
+        <div class="loading-content">
+            <div class="loading-character">
+                <img src="img/character4.png" alt="慌てているかぎ職人">
+            </div>
+            <div class="loading-message">
+                <p>あわわ、お客さんじゃ！急いで準備せねば！</p>
+            </div>
+            <div class="circle-pulse-loader">
+                <div class="circle-pulse"></div>
+            </div>
+        </div>
+    </div>
+
     <div class="lp-container">
         <header class="lp-header">
             <div class="logo">
@@ -21,7 +36,7 @@
             <div class="hero-content">
                 <h1>サクッと作って、<br>ガチッと守る。</h1> 
                 <p>かぎ職人は、推測不可能で安全なパスワードを瞬時に作成します。<br>もう、パスワードで悩む必要はありません。</p>
-                <a href="main.html" class="cta-button">今すぐ安全なパスワードを作成</a>
+                <a href="#" class="cta-button" onclick="navigateToMain(event)">今すぐ安全なパスワードを作成</a>
             </div>
             <div class="hero-image">
                 <img src="img/mockup.png" alt="here-image">
@@ -126,7 +141,7 @@
         <section class="final-cta-section fade-in">
             <h2>さあ、始めましょう</h2>
             <p>今すぐ強力なパスワードを手に入れて、デジタルライフの安全性を高めましょう。</p>
-            <a href="main.html" class="cta-button">無料でパスワードを生成する</a>
+            <a href="#" class="cta-button" onclick="navigateToMain(event)">無料でパスワードを生成する</a>
         </section>
 
         <footer class="site-footer">

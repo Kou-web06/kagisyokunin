@@ -321,7 +321,9 @@ input:checked + .slider:before {
     color: #444;
 }
 #passwordLength {
+    max-width: 400px;
     width: 100%;
+    margin: 0 auto;
     -webkit-appearance: none;
     height: 8px;
     border-radius: 5px;
